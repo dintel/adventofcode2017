@@ -16,5 +16,14 @@ func Day1(part int, data []byte) {
 		}
 		log.Printf("Solution to captcha is %d", result)
 	case 2:
+		offset := len(data)/2
+		result := 0
+		for i:=0; i<len(data); i++ {
+			j := (i+offset)%len(data)
+			if data[i] == data[j] {
+				result += int(data[i]-'0')
+			}
+		}
+		log.Printf("Solution to captcha is %d", result)
 	}
 }
