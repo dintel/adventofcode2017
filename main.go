@@ -46,6 +46,10 @@ func main() {
 	switch day {
 	case 1:
 		Day1(part, data)
+	case 2:
+		Day2(part, data)
+	default:
+		log.Printf("Day %d not implemented yet", day)
 	}
 	end := time.Now()
 	duration := end.Sub(start)
