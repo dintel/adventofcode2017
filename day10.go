@@ -32,7 +32,7 @@ func (hasher *KnotHasher) String() string {
 		for j := 0; j < KnotHashBlock; j++ {
 			blockValue ^= hasher.Get(i*KnotHashBlock + j)
 		}
-		result += fmt.Sprintf("%x", blockValue)
+		result += fmt.Sprintf("%02x", blockValue)
 	}
 	return result
 }
@@ -46,6 +46,17 @@ func (hasher *KnotHasher) Hash(input []int) {
 		hasher.reverse(hasher.current, n)
 		hasher.current = (hasher.current + n + hasher.skip) % len(hasher.list)
 		hasher.skip = (hasher.skip + 1) % len(hasher.list)
+	}
+}
+
+func (hasher *KnotHasher) FullHash(data []byte) {
+	input := make([]int, len(data))
+	for i, ch := range data {
+		input[i] = int(ch)
+	}
+	input = append(input, 17, 31, 73, 47, 23)
+	for i := 0; i < 64; i++ {
+		hasher.Hash(input)
 	}
 }
 
