@@ -72,6 +72,8 @@ func main() {
 		Day13(part, data)
 	case 14:
 		Day14(part, data)
+	case 15:
+		Day15(part, data)
 	default:
 		log.Printf("Day %d not implemented yet", day)
 	}
